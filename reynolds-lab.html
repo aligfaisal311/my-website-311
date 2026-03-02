@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reynolds Experiment - Talk-Back Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --lab-bg: #020617;
+            --pipe-color: rgba(6, 182, 212, 0.2);
+            --dye-color: #ec4899;
+            --panel-bg: rgba(15, 23, 42, 0.9);
+        }
+
+        body {
+            background: var(--lab-bg);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #lab-container {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: opacity 0.5s ease;
+        }
+
+        .overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .talk-back-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--accent-glow);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .prediction-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .prediction-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 10px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .prediction-btn:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent-color);
+        }
+
+        .lab-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            background: var(--panel-bg);
+            padding: 20px 40px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 150px;
+        }
+
+        .control-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-color);
+        }
+
+        .virtual-probe {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: var(--panel-bg);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            min-width: 250px;
+        }
+
+        .probe-value {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .status-badge.visible {
+            opacity: 1;
+        }
+
+        #fluctuation-chart {
+            height: 60px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Prof. Faisal</a>
+            <ul class="nav-links">
+                <li><a href="virtual-lab.html" class="nav-link">Back to Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="lab-container">
+        <!-- Introduction Overlay -->
+        <div id="intro-overlay" class="overlay">
+            <div class="talk-back-card">
+                <p class="hero-subtitle">Experiment 01</p>
+                <h2>Reynolds Number & Flow Transition</h2>
+                <p style="margin: 20px 0; color: var(--text-muted);">
+                    Welcome to the Virtual Fluid Mechanics Lab. We are observing fluid flow through a transparent pipe.
+                </p>
+                <div class="prediction-box">
+                    <p><strong>Initial Question:</strong> If we increase the velocity of fluid very slowly, what do you
+                        expect the injected dye to do?</p>
+                    <div class="prediction-options">
+                        <button class="prediction-btn" onclick="app.makePrediction('straight')">A) Stay as a perfectly
+                            straight thin line</button>
+                        <button class="prediction-btn" onclick="app.makePrediction('wobble')">B) Instantly start
+                            wobbling and mixing</button>
+                        <button class="prediction-btn" onclick="app.makePrediction('disappear')">C) Disappear into the
+                            fluid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulation UI -->
+        <div class="status-badge" id="flow-status">LAMINAR FLOW</div>
+
+        <canvas id="simCanvas"></canvas>
+
+        <div class="virtual-probe">
+            <div class="control-label">Virtual Probe Data</div>
+            <div style="margin: 10px 0;">
+                <span id="velocity-readout" class="probe-value">0.00</span> m/s
+            </div>
+            <div id="re-readout" style="font-size: 0.9rem; color: var(--text-muted); visibility: hidden;">
+                Re = <span id="re-value">0</span>
+            </div>
+            <div class="control-label" style="margin-top: 10px;">Fluctuations</div>
+            <canvas id="fluctuation-chart"></canvas>
+        </div>
+
+        <div class="lab-controls">
+            <div class="control-group">
+                <label class="control-label">Fluid </label>
+                <select id="fluidSelect"
+                    style="background: transparent; color: white; border: 1px solid var(--border-color); border-radius: 5px; padding: 5px;">
+                    <option value="water">Water</option>
+                    <option value="air">Air</option>
+                    <option value="glycerin">Glycerin</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Inlet Velocity</label>
+                <input type="range" id="velSlider" min="0.05" max="5.0" step="0.01" value="0.1">
+            </div>
+            <div class="control-group">
+                <label class="control-label">Pipe Diameter</label>
+                <select id="diamSelect"
+                    style="background: transparent; color: white; border: 1px solid var(--border-color);">
+                    <option value="0.02">20 mm</option>
+                    <option value="0.05">50 mm</option>
+                    <option value="0.10">100 mm</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Dye Position</label>
+                <input type="range" id="dyeSlider" min="-0.4" max="0.4" step="0.01" value="0">
+            </div>
+            <button class="btn" style="padding: 10px 20px;" onclick="app.resetDye()">Reset Dye</button>
+        </div>
+    </div>
+
+    <!-- Alert / Prompt Container -->
+    <div id="prompt-container"
+        style="position: absolute; top: 100px; left: 50%; transform: translateX(-50%); z-index: 50; width: 400px; pointer-events: none;">
+    </div>
+
+    <script src="reynolds-lab.js"></script>
+</body>
+
+</html>
