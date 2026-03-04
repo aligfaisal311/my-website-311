@@ -45,8 +45,8 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="reveal" style="text-align: center; font-size: 3rem; margin-bottom: 60px;">Simulation Modules</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <!-- Experiment 1: Reynolds -->
                 <div class="card-premium reveal" onclick="window.location.href='reynolds-lab.html'"
                     style="cursor: pointer;">
                     <div class="badge badge-primary">CFD</div>
@@ -55,30 +55,125 @@
                         Visualizing flow patterns through various geometries using ANSYS Fluent based digital twins.
                     </p>
                     <div
-                        style="height: 200px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
                         <span style="color: var(--accent-color);">Start Reynolds Experiment</span>
                     </div>
                 </div>
-                <div class="card-premium reveal" style="transition-delay: 0.1s;">
-                    <div class="badge badge-primary">Bio-Fluids</div>
-                    <h3>Hemodynamics Module</h3>
-                    <p style="color: var(--text-muted); margin: 20px 0;">
-                        Virtual representation of blood flow in bifurcated arteries and circulatory systems.
-                    </p>
+
+                <!-- Experiment 2: Bernoulli -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/bernoulli/'"
+                    style="cursor: pointer; transition-delay: 0.1s;">
+                    <div class="badge badge-primary">Fluid Mechanics</div>
+                    <h3>Bernoulli's Theorem</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Verification of Bernoulli's theorem for
+                        incompressible flow in a varying cross-section duct.</p>
                     <div
-                        style="height: 200px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
-                        <span style="color: var(--accent-color);">Interactive Simulation Placeholder</span>
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
                     </div>
                 </div>
-                <div class="card-premium reveal" style="transition-delay: 0.2s;">
-                    <div class="badge badge-primary">Thermal</div>
-                    <h3>Heat Transfer Lab</h3>
-                    <p style="color: var(--text-muted); margin: 20px 0;">
-                        Simulating conduction, convection, and radiation in complex mechanical assemblies.
-                    </p>
+
+                <!-- Experiment 3: Pipe Friction -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/pipe-friction/'"
+                    style="cursor: pointer; transition-delay: 0.2s;">
+                    <div class="badge badge-primary">Hydraulics</div>
+                    <h3>Pipe Friction Loss</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Determination of friction factor for different
+                        types of pipes and flow regimes.</p>
                     <div
-                        style="height: 200px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
-                        <span style="color: var(--accent-color);">Interactive Simulation Placeholder</span>
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 4: Venturimeter -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/venturimeter/'"
+                    style="cursor: pointer;">
+                    <div class="badge badge-primary">Instrumentation</div>
+                    <h3>Venturimeter Calibration</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Determination of coefficient of discharge for a
+                        Venturimeter to measure flow rate.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 5: Orifice Meter -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/orifice-meter/'"
+                    style="cursor: pointer; transition-delay: 0.1s;">
+                    <div class="badge badge-primary">Instrumentation</div>
+                    <h3>Orifice Meter Calibration</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Calibration and measurement of flow using an
+                        Orifice plate installation.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 6: Impact of Jet -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/jet-impact/'"
+                    style="cursor: pointer; transition-delay: 0.2s;">
+                    <div class="badge badge-primary">Fluid Dynamics</div>
+                    <h3>Impact of Jet</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Investigation of forces produced by a liquid
+                        jet striking flat or hemispherical vanes.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 7: Centrifugal Pump -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/centrifugal-pump/'"
+                    style="cursor: pointer;">
+                    <div class="badge badge-primary">Turbo Machinery</div>
+                    <h3>Centrifugal Pump</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Analysis of performance characteristics (Power,
+                        Efficiency, Head) of a Centrifugal Pump.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 8: Pelton Wheel -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/pelton-wheel/'"
+                    style="cursor: pointer; transition-delay: 0.1s;">
+                    <div class="badge badge-primary">Turbo Machinery</div>
+                    <h3>Pelton Wheel Turbine</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Experimentation on impulse turbine performance
+                        under varying load and head conditions.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 9: Francis Turbine -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/francis-turbine/'"
+                    style="cursor: pointer; transition-delay: 0.2s;">
+                    <div class="badge badge-primary">Turbo Machinery</div>
+                    <h3>Francis Turbine</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Study of reaction turbine performance and
+                        efficiency curves through simulation.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 10: Metacentric Height -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/metacentric-height/'"
+                    style="cursor: pointer;">
+                    <div class="badge badge-primary">Hydrostatics</div>
+                    <h3>Metacentric Height</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Determination of metacentric height of a
+                        floating vessel for stability analysis.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
                     </div>
                 </div>
             </div>
