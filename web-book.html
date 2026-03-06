@@ -63,6 +63,31 @@
         </div>
     </div>
 
+    <!-- Student Q&A Hub Section -->
+    <section class="section">
+        <div class="container">
+            <div class="card-premium reveal"
+                style="max-width: 800px; margin: 0 auto; border-top: 4px solid var(--accent-color);">
+                <div class="badge badge-accent">Adaptive Learning</div>
+                <h2>Student Interaction Hub</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">
+                    Have questions about the material? Ask them here. Your queries help improve the adaptive learning
+                    system.
+                </p>
+
+                <form id="student-query-form">
+                    <div style="margin-bottom: 20px;">
+                        <textarea id="student-query" class="form-control" rows="4"
+                            style="width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: var(--white); font-family: inherit;"
+                            placeholder="Type your question about Fluid Mechanics or CFD..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit Query</button>
+                    <div id="query-status" style="margin-top: 15px; font-size: 0.9rem; display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -75,6 +100,36 @@
     </footer>
 
     <script type="module" src="main.js"></script>
+    <script type="module" src="firebase-auth.js"></script>
+    <script type="module">
+        import { logStudentInteraction } from './interaction-tracker.js';
+
+        const form = document.getElementById('student-query-form');
+        const status = document.getElementById('query-status');
+
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const query = document.getElementById('student-query').value.trim();
+
+                if (query) {
+                    status.textContent = 'Logging your query...';
+                    status.style.display = 'block';
+                    status.style.color = 'var(--text-muted)';
+
+                    try {
+                        await logStudentInteraction('Web Book', query, 'PENDING_FACULTY_REVIEW');
+                        status.textContent = 'Query logged successfully! This data helps refine our adaptive learning models.';
+                        status.style.color = 'var(--accent-color)';
+                        document.getElementById('student-query').value = '';
+                    } catch (err) {
+                        status.textContent = 'Error logging query. Please ensure you are logged in.';
+                        status.style.color = '#f87171';
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

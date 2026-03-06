@@ -69,8 +69,11 @@
             color: var(--accent-color);
         }
     </style>
-  <script type="module" crossorigin src="./assets/style-B0YUJ_iI.js"></script>
-  <script type="module" crossorigin src="./assets/main-B_YuA0JO.js"></script>
+  <script type="module" crossorigin src="./assets/virtual-BgG-yF8A.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/style-B0YUJ_iI.js">
+  <link rel="modulepreload" crossorigin href="./assets/main-B_YuA0JO.js">
+  <link rel="modulepreload" crossorigin href="./assets/firebase-auth-0gq3wj6h.js">
+  <link rel="modulepreload" crossorigin href="./assets/interaction-tracker-Bss2WDrW.js">
   <link rel="stylesheet" crossorigin href="./assets/style-BSDDkkv1.css">
 </head>
 
@@ -336,6 +339,31 @@
         </div>
     </main>
 
+    <!-- Student Q&A Hub Section -->
+    <section class="section" style="padding-top: 60px;">
+        <div class="container">
+            <div class="card-premium reveal"
+                style="max-width: 800px; margin: 0 auto; border-top: 4px solid var(--accent-color);">
+                <div class="badge badge-accent">Virtual Lab Support</div>
+                <h2>Lab Experiment Query Hub</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">
+                    Having trouble with an experiment? Post your query here. These interactions train our Intelligent
+                    Tutoring system for better guidance.
+                </p>
+
+                <form id="student-query-form">
+                    <div style="margin-bottom: 20px;">
+                        <textarea id="student-query" class="form-control" rows="4"
+                            style="width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: var(--white); font-family: inherit;"
+                            placeholder="e.g., Why does the pressure drop in the Venturi experiment?"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Log Interaction</button>
+                    <div id="query-status" style="margin-top: 15px; font-size: 0.9rem; display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer style="margin-top: 100px;">
         <div class="container">
             <div class="footer-content">
@@ -349,7 +377,7 @@
             <p>&copy; 2024 Faisal Shameem. Engineered for excellence.</p>
         </div>
     </footer>
-
+
 </body>
 
 </html>
