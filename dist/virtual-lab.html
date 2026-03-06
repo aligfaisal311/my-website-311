@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Virtual Laboratory for Fluid Mechanics and CFD research by Faisal Shameem.">
-    <title>Virtual Lab - Faisal Shameem</title>
-
+    <title>Virtual Lab - Faisal Shameem</title>
   <script type="module" crossorigin src="./assets/style-B0YUJ_iI.js"></script>
   <script type="module" crossorigin src="./assets/main-B_YuA0JO.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/style-BSDDkkv1.css">
@@ -15,7 +14,7 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">Faisal Shameem</a>
+            <a href="index.html" class="logo">Shameem Dynamics</a>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -25,7 +24,8 @@
                 <li><a href="ai-integration.html" class="nav-link">AI in Teaching</a></li>
                 <li><a href="research.html" class="nav-link">Research</a></li>
                 <li><a href="publications.html" class="nav-link">Publications</a></li>
-                <li><a href="teaching.html" class="nav-link">Teaching</a></li><li><a href="pbl.html" class="nav-link">PBL</a></li>
+                <li><a href="teaching.html" class="nav-link">Teaching</a></li>
+                <li><a href="pbl.html" class="nav-link">PBL</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -62,7 +62,7 @@
                 </div>
 
                 <!-- Experiment 2: Bernoulli -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/bernoulli/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-01/'"
                     style="cursor: pointer; transition-delay: 0.1s;">
                     <div class="badge badge-primary">Fluid Mechanics</div>
                     <h3>Bernoulli's Theorem</h3>
@@ -75,7 +75,7 @@
                 </div>
 
                 <!-- Experiment 3: Pipe Friction -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/pipe-friction/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-02/'"
                     style="cursor: pointer; transition-delay: 0.2s;">
                     <div class="badge badge-primary">Hydraulics</div>
                     <h3>Pipe Friction Loss</h3>
@@ -88,22 +88,20 @@
                 </div>
 
                 <!-- Experiment 4: Venturimeter -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/venturimeter/'"
-                    style="cursor: pointer;">
-                    <div class="badge badge-primary">Instrumentation</div>
+                <div class="card-premium reveal" style="opacity: 0.7;">
+                    <div class="badge badge-secondary">Fluid Mechanics</div>
                     <h3>Venturimeter Calibration</h3>
                     <p style="color: var(--text-muted); margin: 20px 0;">Determination of coefficient of discharge for a
                         Venturimeter to measure flow rate.</p>
-                    <div
-                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                    <div style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color); cursor: pointer;"
+                        onclick="window.location.href='virtual-lab/fluid-mechanics/exp-03/'">
                         <span style="color: var(--accent-color);">Start Experiment</span>
                     </div>
                 </div>
 
-                <!-- Experiment 5: Orifice Meter -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/orifice-meter/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-04/'"
                     style="cursor: pointer; transition-delay: 0.1s;">
-                    <div class="badge badge-primary">Instrumentation</div>
+                    <div class="badge badge-primary">Fluid Mechanics</div>
                     <h3>Orifice Meter Calibration</h3>
                     <p style="color: var(--text-muted); margin: 20px 0;">Calibration and measurement of flow using an
                         Orifice plate installation.</p>
@@ -113,10 +111,9 @@
                     </div>
                 </div>
 
-                <!-- Experiment 6: Impact of Jet -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/jet-impact/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-05/'"
                     style="cursor: pointer; transition-delay: 0.2s;">
-                    <div class="badge badge-primary">Fluid Dynamics</div>
+                    <div class="badge badge-primary">Fluid Mechanics</div>
                     <h3>Impact of Jet</h3>
                     <p style="color: var(--text-muted); margin: 20px 0;">Investigation of forces produced by a liquid
                         jet striking flat or hemispherical vanes.</p>
@@ -126,10 +123,9 @@
                     </div>
                 </div>
 
-                <!-- Experiment 7: Centrifugal Pump -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/centrifugal-pump/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/turbomachinery/exp-01/'"
                     style="cursor: pointer;">
-                    <div class="badge badge-primary">Turbo Machinery</div>
+                    <div class="badge badge-primary">Turbomachinery</div>
                     <h3>Centrifugal Pump</h3>
                     <p style="color: var(--text-muted); margin: 20px 0;">Analysis of performance characteristics (Power,
                         Efficiency, Head) of a Centrifugal Pump.</p>
@@ -139,10 +135,9 @@
                     </div>
                 </div>
 
-                <!-- Experiment 8: Pelton Wheel -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/pelton-wheel/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/turbomachinery/exp-02/'"
                     style="cursor: pointer; transition-delay: 0.1s;">
-                    <div class="badge badge-primary">Turbo Machinery</div>
+                    <div class="badge badge-primary">Turbomachinery</div>
                     <h3>Pelton Wheel Turbine</h3>
                     <p style="color: var(--text-muted); margin: 20px 0;">Experimentation on impulse turbine performance
                         under varying load and head conditions.</p>
@@ -152,10 +147,9 @@
                     </div>
                 </div>
 
-                <!-- Experiment 9: Francis Turbine -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/francis-turbine/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/turbomachinery/exp-03/'"
                     style="cursor: pointer; transition-delay: 0.2s;">
-                    <div class="badge badge-primary">Turbo Machinery</div>
+                    <div class="badge badge-primary">Turbomachinery</div>
                     <h3>Francis Turbine</h3>
                     <p style="color: var(--text-muted); margin: 20px 0;">Study of reaction turbine performance and
                         efficiency curves through simulation.</p>
@@ -166,9 +160,9 @@
                 </div>
 
                 <!-- Experiment 10: Metacentric Height -->
-                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/metacentric-height/'"
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-06/'"
                     style="cursor: pointer;">
-                    <div class="badge badge-primary">Hydrostatics</div>
+                    <div class="badge badge-primary">Fluid Mechanics</div>
                     <h3>Metacentric Height</h3>
                     <p style="color: var(--text-muted); margin: 20px 0;">Determination of metacentric height of a
                         floating vessel for stability analysis.</p>
@@ -187,13 +181,13 @@
                 <h3>Faisal Shameem</h3>
                 <p>Assistant Professor · Department of Mechanical Engineering</p>
                 <p>Galgotias University · Greater Noida</p>
-                <p style="color: var(--accent-color); margin-top: 20px;">aligfaisal@gmail.com | faisal.shameem@galgotiasuniversity.edu.in | +91 8860764484</p>
+                <p style="color: var(--accent-color); margin-top: 20px;">aligfaisal@gmail.com |
+                    faisal.shameem@galgotiasuniversity.edu.in | +91 8860764484</p>
             </div>
             <p>&copy; 2024 Faisal Shameem. Engineered for excellence.</p>
         </div>
     </footer>
-
-
+
 </body>
 
 </html>

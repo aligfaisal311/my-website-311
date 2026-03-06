@@ -24,6 +24,7 @@ export default defineConfig({
                 sw_res: resolve(__dirname, 'solidworks-resources.html'),
                 print_res: resolve(__dirname, '3d-printing-resources.html'),
                 work_res: resolve(__dirname, 'workshop-resources.html'),
+                pbl: resolve(__dirname, 'pbl.html'),
             },
         },
         outDir: 'dist',
