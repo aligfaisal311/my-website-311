@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Virtual Laboratory for Fluid Mechanics and CFD research by Faisal Shameem.">
+    <title>Virtual Lab - Faisal Shameem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Shameem Dynamics</a>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="virtual-lab.html" class="nav-link active">Virtual Lab</a></li>
+                <li><a href="ai-integration.html" class="nav-link">AI in Teaching</a></li>
+                <li><a href="research.html" class="nav-link">Research</a></li>
+                <li><a href="publications.html" class="nav-link">Publications</a></li>
+                <li><a href="teaching.html" class="nav-link">Teaching</a></li>
+                <li><a href="pbl.html" class="nav-link">PBL</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" style="min-height: 40vh;">
+        <div class="container hero-content">
+            <div class="hero-text reveal">
+                <p class="hero-subtitle">Interactive Simulations</p>
+                <h1>Virtual Laboratory</h1>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 600px;">
+                    Digital experimentation platform for CFD and Fluid Mechanics. Explore interactive modules and
+                    high-fidelity simulations.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <!-- Experiment 1: Reynolds -->
+                <div class="card-premium reveal" onclick="window.location.href='reynolds-lab.html'"
+                    style="cursor: pointer;">
+                    <div class="badge badge-primary">CFD</div>
+                    <h3>Laminar & Turbulent Flows</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">
+                        Visualizing flow patterns through various geometries using ANSYS Fluent based digital twins.
+                    </p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Reynolds Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 2: Bernoulli -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-01/'"
+                    style="cursor: pointer; transition-delay: 0.1s;">
+                    <div class="badge badge-primary">Fluid Mechanics</div>
+                    <h3>Bernoulli's Theorem</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Verification of Bernoulli's theorem for
+                        incompressible flow in a varying cross-section duct.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 3: Pipe Friction -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-02/'"
+                    style="cursor: pointer; transition-delay: 0.2s;">
+                    <div class="badge badge-primary">Hydraulics</div>
+                    <h3>Pipe Friction Loss</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Determination of friction factor for different
+                        types of pipes and flow regimes.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 4: Venturimeter -->
+                <div class="card-premium reveal" style="opacity: 0.7;">
+                    <div class="badge badge-secondary">Fluid Mechanics</div>
+                    <h3>Venturimeter Calibration</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Determination of coefficient of discharge for a
+                        Venturimeter to measure flow rate.</p>
+                    <div style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color); cursor: pointer;"
+                        onclick="window.location.href='virtual-lab/fluid-mechanics/exp-03/'">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-04/'"
+                    style="cursor: pointer; transition-delay: 0.1s;">
+                    <div class="badge badge-primary">Fluid Mechanics</div>
+                    <h3>Orifice Meter Calibration</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Calibration and measurement of flow using an
+                        Orifice plate installation.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-05/'"
+                    style="cursor: pointer; transition-delay: 0.2s;">
+                    <div class="badge badge-primary">Fluid Mechanics</div>
+                    <h3>Impact of Jet</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Investigation of forces produced by a liquid
+                        jet striking flat or hemispherical vanes.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/turbomachinery/exp-01/'"
+                    style="cursor: pointer;">
+                    <div class="badge badge-primary">Turbomachinery</div>
+                    <h3>Centrifugal Pump</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Analysis of performance characteristics (Power,
+                        Efficiency, Head) of a Centrifugal Pump.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/turbomachinery/exp-02/'"
+                    style="cursor: pointer; transition-delay: 0.1s;">
+                    <div class="badge badge-primary">Turbomachinery</div>
+                    <h3>Pelton Wheel Turbine</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Experimentation on impulse turbine performance
+                        under varying load and head conditions.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/turbomachinery/exp-03/'"
+                    style="cursor: pointer; transition-delay: 0.2s;">
+                    <div class="badge badge-primary">Turbomachinery</div>
+                    <h3>Francis Turbine</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Study of reaction turbine performance and
+                        efficiency curves through simulation.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+
+                <!-- Experiment 10: Metacentric Height -->
+                <div class="card-premium reveal" onclick="window.location.href='virtual-lab/fluid-mechanics/exp-06/'"
+                    style="cursor: pointer;">
+                    <div class="badge badge-primary">Fluid Mechanics</div>
+                    <h3>Metacentric Height</h3>
+                    <p style="color: var(--text-muted); margin: 20px 0;">Determination of metacentric height of a
+                        floating vessel for stability analysis.</p>
+                    <div
+                        style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--accent-color);">
+                        <span style="color: var(--accent-color);">Start Experiment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Faisal Shameem</h3>
+                <p>Assistant Professor · Department of Mechanical Engineering</p>
+                <p>Galgotias University · Greater Noida</p>
+                <p style="color: var(--accent-color); margin-top: 20px;">aligfaisal@gmail.com |
+                    faisal.shameem@galgotiasuniversity.edu.in | +91 8860764484</p>
+            </div>
+            <p>&copy; 2024 Faisal Shameem. Engineered for excellence.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
