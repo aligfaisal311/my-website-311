@@ -1,20 +1,10 @@
-import { initializeApp } from "firebase/app";
 import {
-    getAuth,
     signInWithPopup,
-    GoogleAuthProvider,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { firebaseConfig } from "./firebase-config.js";
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const provider = new GoogleAuthProvider();
+import { auth, googleProvider } from "./firebase-config.js";
 
 // DOM Elements
 const loginForm = document.getElementById('login-form');
@@ -25,7 +15,7 @@ const errorBox = document.getElementById('error-box');
 if (googleLoginBtn) {
     googleLoginBtn.addEventListener('click', async () => {
         try {
-            await signInWithPopup(auth, provider);
+            await signInWithPopup(auth, googleProvider);
             // Redirection handled by onAuthStateChanged
         } catch (error) {
             showError(error.message);
@@ -72,6 +62,7 @@ onAuthStateChanged(auth, (user) => {
         if (protectedPages.includes(currentPage)) {
             window.location.href = 'login.html';
         }
+        updateNavForAuth(null);
     }
 });
 
@@ -112,4 +103,4 @@ function updateNavForAuth(user) {
     }
 }
 
-export { auth, db };
+export { auth };

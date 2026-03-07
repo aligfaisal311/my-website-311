@@ -1,13 +1,25 @@
-// Firebase Configuration for Faisal Shameem Engineering Portfolio
-// To obtain these values, create a project at https://console.firebase.google.com/
-// Then go to Project Settings > General > Your Apps > Add App > Web
+// Centralized Firebase Service for Faisal Shameem Engineering Portfolio
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-export const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    measurementId: "YOUR_MEASUREMENT_ID"
+const firebaseConfig = {
+  apiKey: "AIzaSyCfyNJe-7VBUNALUAZb8tKRl2pZGe4KAzw",
+  authDomain: "my-website-7e631.firebaseapp.com",
+  projectId: "my-website-7e631",
+  storageBucket: "my-website-7e631.firebasestorage.app",
+  messagingSenderId: "368013659922",
+  appId: "1:368013659922:web:eceb6ab719767798ebedcb",
+  measurementId: "G-B812X1H00K"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const googleProvider = new GoogleAuthProvider();
+
+// Export everything for use in other files
+export { app, analytics, auth, db, googleProvider, firebaseConfig };
