@@ -93,7 +93,7 @@ onAuthStateChanged(auth, (user) => {
 
     if (user) {
         if (currentPage === 'login.html') {
-            window.location.href = 'index.html';
+            window.location.href = 'virtual-lab.html';
         }
         updateNavForAuth(user);
     } else {
