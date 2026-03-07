@@ -1,6 +1,7 @@
 import {
     signInWithPopup,
     signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
     onAuthStateChanged,
     signOut
 } from "firebase/auth";
@@ -10,20 +11,28 @@ import { auth, googleProvider } from "./firebase-config.js";
 const loginForm = document.getElementById('login-form');
 const googleLoginBtn = document.getElementById('google-login');
 const errorBox = document.getElementById('error-box');
+const switchBtn = document.getElementById('switch-to-signup');
+const welcomeTitle = document.querySelector('.login-card h1');
+const welcomeDesc = document.querySelector('.login-card p');
+const submitBtn = document.querySelector('.btn-login');
+
+let isSignup = false;
 
 // Handle Google Login
 if (googleLoginBtn) {
     googleLoginBtn.addEventListener('click', async () => {
         try {
+            console.log("Attempting Google Sign-In...");
             await signInWithPopup(auth, googleProvider);
-            // Redirection handled by onAuthStateChanged
+            console.log("Google Sign-In Success");
         } catch (error) {
+            console.error("Google Login Error:", error);
             showError(error.message);
         }
     });
 }
 
-// Handle Email/Password Login
+// Handle Form Submission (Login or Signup)
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -31,10 +40,40 @@ if (loginForm) {
         const password = document.getElementById('password').value;
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            if (isSignup) {
+                console.log("Attempting Signup for:", email);
+                await createUserWithEmailAndPassword(auth, email, password);
+                console.log("Signup Success");
+            } else {
+                console.log("Attempting Login for:", email);
+                await signInWithEmailAndPassword(auth, email, password);
+                console.log("Login Success");
+            }
         } catch (error) {
+            console.error("Auth Error:", error);
             showError(error.message);
         }
+    });
+}
+
+// Toggle between Login and Signup
+if (switchBtn) {
+    switchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        isSignup = !isSignup;
+
+        if (isSignup) {
+            welcomeTitle.textContent = "Create Account";
+            welcomeDesc.textContent = "Join the platform to access research materials.";
+            submitBtn.textContent = "Sign Up";
+            switchBtn.textContent = "Login instead";
+        } else {
+            welcomeTitle.textContent = "Welcome Back";
+            welcomeDesc.textContent = "Sign in to access Virtual Labs and Web Book materials.";
+            submitBtn.textContent = "Sign In";
+            switchBtn.textContent = "Sign up";
+        }
+        errorBox.style.display = 'none';
     });
 }
 
@@ -50,15 +89,14 @@ onAuthStateChanged(auth, (user) => {
     const protectedPages = ['virtual-lab.html', 'web-book.html', 'reynolds-lab.html'];
     const currentPage = window.location.pathname.split('/').pop();
 
+    console.log("Auth State Changed. User:", user ? user.email : "none", "Page:", currentPage);
+
     if (user) {
-        // User is signed in
         if (currentPage === 'login.html') {
             window.location.href = 'index.html';
         }
-        // Update UI (e.g., change "Login" to "Logout")
         updateNavForAuth(user);
     } else {
-        // User is signed out
         if (protectedPages.includes(currentPage)) {
             window.location.href = 'login.html';
         }
@@ -70,14 +108,11 @@ function updateNavForAuth(user) {
     const navLinks = document.querySelector('.nav-links');
     if (!navLinks) return;
 
-    // Check if login/logout links already exist
     let loginBtn = document.getElementById('login-link');
     let logoutBtn = document.getElementById('logout-btn');
 
     if (user) {
-        // User is LOGGED IN: Show Logout, hide Login
         if (loginBtn) loginBtn.parentElement.remove();
-
         if (!logoutBtn) {
             const logoutLi = document.createElement('li');
             logoutLi.innerHTML = `<a href="#" id="logout-btn" class="nav-link">Logout</a>`;
@@ -92,9 +127,7 @@ function updateNavForAuth(user) {
             });
         }
     } else {
-        // User is LOGGED OUT: Show Login, hide Logout
         if (logoutBtn) logoutBtn.parentElement.remove();
-
         if (!loginBtn) {
             const loginLi = document.createElement('li');
             loginLi.innerHTML = `<a href="login.html" id="login-link" class="nav-link">Student Login</a>`;
