@@ -25,6 +25,7 @@ export default defineConfig({
                 print_res: resolve(__dirname, '3d-printing-resources.html'),
                 work_res: resolve(__dirname, 'workshop-resources.html'),
                 pbl: resolve(__dirname, 'pbl.html'),
+                login: resolve(__dirname, 'login.html'),
             },
         },
         outDir: 'dist',
