@@ -659,3 +659,8 @@ footer p {
   padding: 8px 20px;
   font-size: 0.85rem;
 }
+
+/* Auth Restricted Content */
+.auth-only {
+  display: none;
+}

@@ -86,10 +86,21 @@ function showError(message) {
 
 // Global Auth State Observer
 onAuthStateChanged(auth, (user) => {
-    const protectedPages = ['virtual-lab.html', 'web-book.html', 'reynolds-lab.html'];
+    // Only Web Book remains strictly protected for guests
+    const protectedPages = ['web-book.html', 'reynolds-lab.html'];
     const currentPage = window.location.pathname.split('/').pop();
 
     console.log("Auth State Changed. User:", user ? user.email : "none", "Page:", currentPage);
+
+    // Toggle visibility of auth-only elements
+    const authOnlyElements = document.querySelectorAll('.auth-only');
+    authOnlyElements.forEach(el => {
+        el.style.display = user ? 'block' : 'none';
+        // Handle list items specifically if needed for navbar layout
+        if (el.tagName === 'LI' && user) {
+            el.style.display = 'list-item';
+        }
+    });
 
     if (user) {
         if (currentPage === 'login.html') {
