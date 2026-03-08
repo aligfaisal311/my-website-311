@@ -44,94 +44,252 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="reveal" style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Student Projects &
-                Resources</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <!-- Group 1 -->
-                <div class="card-premium reveal">
-                    <div class="badge badge-accent">Interactive Design</div>
-                    <h3>Group 1: Car Cross Section</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Technical analysis of automotive cross-sections
-                        and structural design.</p>
-                    <a href="pbl/Group-1%20%20%20CAR%20CROSS%20SECTION.pptx" class="btn btn-outline btn-sm">Download
-                        PPTX</a>
-                </div>
-
-                <!-- Group 2 -->
-                <div class="card-premium reveal" style="transition-delay: 0.1s;">
-                    <div class="badge badge-primary">Poster</div>
-                    <h3>Group 2: Project Poster</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Visual representation of the engineering
-                        project methodology and results.</p>
-                    <a href="pbl/Poster%20Group%202(1).pptx" class="btn btn-outline btn-sm">Download PPTX</a>
-                </div>
-
-                <!-- Group 6 -->
-                <div class="card-premium reveal" style="transition-delay: 0.2s;">
-                    <div class="badge badge-secondary">Bio-Fluids</div>
-                    <h3>Group 6: Bifurcating Artery</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Simulation of blood flow through bifurcating
-                        arteries using CFD tools.</p>
-                    <a href="pbl/Poster%20Group%206%20Bifurcating%20artery.pptx" class="btn btn-outline btn-sm">Download
-                        PPTX</a>
-                </div>
-
-                <!-- Group 9 -->
-                <div class="card-premium reveal">
-                    <div class="badge badge-primary">Poster</div>
-                    <h3>Group 9: Technical Poster</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Research findings and technical specifications
-                        showcased in a poster format.</p>
-                    <a href="pbl/GROUP%20-9%20(Poster).pptx" class="btn btn-outline btn-sm">Download PPTX</a>
-                </div>
-
-                <!-- Group 10 -->
-                <div class="card-premium reveal" style="transition-delay: 0.1s;">
-                    <div class="badge badge-accent">Presentation</div>
-                    <h3>Group 10: Project Overview</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Complete project presentation covering design,
-                        analysis, and conclusions.</p>
-                    <a href="pbl/GROUP-10.pptx" class="btn btn-outline btn-sm">Download PPTX</a>
-                </div>
-
-                <!-- Ahmed Body -->
-                <div class="card-premium reveal" style="transition-delay: 0.2s;">
-                    <div class="badge badge-secondary">Aerodynamics</div>
-                    <h3>Ahmed Body Aerodynamics</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Detailed study of the Ahmed body air flow and
-                        drag coefficient analysis.</p>
-                    <a href="pbl/ppt%20of%20ahmed%20body.pptx" class="btn btn-outline btn-sm">Download PPTX</a>
-                </div>
-
-                <!-- Laminar/Turbulent -->
-                <div class="card-premium reveal">
-                    <div class="badge badge-primary">Fluid Mechanics</div>
-                    <h3>Laminar & Turbulent Flow</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Investigation into flow regimes and Reynolds
-                        number transitions.</p>
-                    <a href="pbl/LAMINAR%20AND%20TURBULENT%20FLOW.pptx" class="btn btn-outline btn-sm">Download PPTX</a>
-                </div>
-
-                <!-- Airconditioned Room -->
-                <div class="card-premium reveal" style="transition-delay: 0.1s;">
-                    <div class="badge badge-accent">Thermal Systems</div>
-                    <h3>Airconditioned Room Analysis</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Heat transfer simulation and cooling efficiency
-                        study of a conditioned space.</p>
-                    <a href="pbl/airconditioned%20room.pptx" class="btn btn-outline btn-sm">Download PPTX</a>
-                </div>
-
-                <!-- CFD Poster -->
-                <div class="card-premium reveal" style="transition-delay: 0.2s;">
-                    <div class="badge badge-secondary">Simulation</div>
-                    <h3>CFD Case Study Poster</h3>
-                    <p style="color: var(--text-muted); margin: 15px 0;">Computational Fluid Dynamics application result
-                        visualization.</p>
-                    <a href="pbl/cfd_poster1.pptx" class="btn btn-outline btn-sm">Download PPTX</a>
-                </div>
+            <h2 class="reveal" style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Student Project
+                Gallery</h2>
+            <div id="pbl-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <!-- Content will be injected by JS for better management -->
             </div>
         </div>
     </section>
+
+    <!-- Slideshow Modal -->
+    <div id="slideshow-modal" class="modal">
+        <div class="modal-content card-premium">
+            <span class="close-modal">&times;</span>
+            <div class="slideshow-container">
+                <div id="slide-viewer">
+                    <div class="slide-header">
+                        <div class="badge badge-accent" id="slide-category">Project Detail</div>
+                        <h2 id="modal-project-title">Project Title</h2>
+                    </div>
+                    <div class="slide-body" id="slide-content">
+                        <!-- Slide text goes here -->
+                    </div>
+                    <div class="slideshow-controls">
+                        <button class="btn btn-outline btn-sm" id="prev-slide">Previous</button>
+                        <span id="slide-counter">Slide 1 of 5</span>
+                        <button class="btn btn-outline btn-sm" id="next-slide">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            background: var(--glass) !important;
+            border: 1px solid var(--accent-glow) !important;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            color: var(--text-muted);
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+        }
+
+        .slide-header {
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .slide-body {
+            min-height: 300px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .slide-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .slide-body li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .slide-body li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .slideshow-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .project-card {
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-color);
+        }
+    </style>
+
+    <script>
+        const pblData = [
+            {
+                title: "Thermal Flow Simulation in an Air-Conditioned Room",
+                category: "Thermal Systems",
+                summary: "Advanced CFD analysis using ANSYS Fluent to model indoor air distribution and temperature gradients for optimized comfort.",
+                slides: ["Introduction: Detailed modelling of indoor environments using computational fluid dynamics.", "Methodology: Steady-state pressure-based solver with k-epsilon turbulence models.", "Results: Visualization of temperature contours and pathlines for optimized air circulation."]
+            },
+            {
+                title: "Verification & Validation of Clark-Y Airfoil Turbulence",
+                category: "Aerodynamics",
+                summary: "A systematic study of lift and pressure coefficients on the Clark-Y profile at low Reynolds numbers.",
+                slides: ["Objective: Conduct verifications for lift and pressure coefficients on Clark-Y airfoils.", "Computational Setup: Reynolds number 143,000 using C-type and O-type meshing domains.", "Analysis: Comparative study of turbulent flows across various numerical schemes."]
+            },
+            {
+                title: "Aerodynamic Drag Reduction in Automotive Design",
+                category: "Simulation",
+                summary: "Investigating the impact of spoilers and vortex generators on fuel efficiency and lift forces in road vehicles.",
+                slides: ["Focus: Impact of aerodynamic drag on vehicle performance and fuel economy.", "Technical Approach: Realizable k-epsilon models with enhanced wall treatments for accurate drag calculation.", "Findings: Design modifications to spoilers can significantly reduce fuel energy loss."]
+            },
+            {
+                title: "2D Structural & Aerodynamic Cross-Section Analysis",
+                category: "Fluid Mechanics",
+                summary: "CFD simulation of air flow over a sedan profile to calculate drag coefficients and optimize maneuverability.",
+                slides: ["Scope: Calculation of forces acting on 2D sedan cross-sections using ANSYS Fluent.", "Process: Numerical analysis of velocity vectors and stream function contours.", "Applications: Enhancing stability and speed through optimized structural aerodynamics."]
+            },
+            {
+                title: "Parametric Study of Turbulent Airfoil Simulations",
+                category: "Research",
+                summary: "Hands-on investigation into the effects of various turbulence models (k-epsilon, k-omega) on airfoil performance.",
+                slides: ["Research Goal: Investigate the effect of Angle of Attack and turbulence models on simulation accuracy.", "Experimental Integration: Comparing CFD results with EFD laboratory data for higher validation.", "Conclusion: Establishing robust simulation design for complex airfoil geometries."]
+            },
+            {
+                title: "Flow Regime Verification in Pipe Dynamics",
+                category: "Fluid Mechanics",
+                summary: "Comparative analysis of laminar and turbulent flow characteristics, focusing on axial velocity profiles and friction factors.",
+                slides: ["Laminar vs Turbulent: Theoretical and numerical exploration of flow regimes in pipes.", "Metrics: Verification of friction factors and center-line pressure variations.", "Simulation: Utilizing ANSYS for high-momentum diffusion and convection analysis."]
+            },
+            {
+                title: "Drag Coefficient Analysis of Bullet Trains",
+                category: "Mechanical Design",
+                summary: "Using complex numerical algorithms to simulate and visualize pressure fields around high-speed rail profiles.",
+                slides: ["Challenge: Simulating turbulent fluid flow around high-speed moving bodies.", "Execution: Mesh generation (137,000 nodes) for precise pressure field mapping.", "Results: Calculation of drag coefficients to improve high-speed rail efficiency."]
+            },
+            {
+                title: "Bio-Fluid Simulation of Blood Flow in Artery Bifurcations",
+                category: "Medical CFD",
+                summary: "Modeling the development of plaque and hemodynamics at coronary arterial branches using realizable K-epsilon models.",
+                slides: ["Biological Insight: Understanding blood flow bifurcation and its role in arterial plaque building.", "Medical Engineering: Realizable K-e omega models applied to human heart artery simulations.", "Analysis: Visualization of eddy viscosity and streamline reports in vascular segments."]
+            },
+            {
+                title: "Benchmark Validation of Ahmed Body Aerodynamics",
+                category: "Industry Standards",
+                summary: "An industry-standard study capturing essential wake structures and separation regions in vehicle aerodynamics.",
+                slides: ["Concept: Analyzing the benchmark Ahmed body geometry for essential flow characteristics.", "Wake Analysis: Focus on separation regions and vortex formation in the rear region.", "Impact: Crucial data for vehicle shape design, noise production, and fuel consumption."]
+            }
+        ];
+
+        let currentProjectIndex = 0;
+        let currentSlideIndex = 0;
+
+        function renderGrid() {
+            const grid = document.getElementById('pbl-grid');
+            grid.innerHTML = pblData.map((project, index) => `
+                <div class="card-premium reveal project-card" onclick="openSlideshow(${index})">
+                    <div class="badge badge-primary">${project.category}</div>
+                    <h3>${project.title}</h3>
+                    <p style="color: var(--text-muted); margin: 15px 0;">${project.summary}</p>
+                    <div style="color: var(--accent-color); font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        View Slideshow <span style="font-size: 1.2rem;">→</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openSlideshow(index) {
+            currentProjectIndex = index;
+            currentSlideIndex = 0;
+            updateModal();
+            document.getElementById('slideshow-modal').style.display = 'flex';
+        }
+
+        function updateModal() {
+            const project = pblData[currentProjectIndex];
+            document.getElementById('modal-project-title').textContent = project.title;
+            document.getElementById('slide-category').textContent = project.category;
+
+            const content = project.slides[currentSlideIndex];
+            document.getElementById('slide-content').innerHTML = `<ul><li>${content}</li></ul>`;
+
+            document.getElementById('slide-counter').textContent = `Slide ${currentSlideIndex + 1} of ${project.slides.length}`;
+
+            document.getElementById('prev-slide').disabled = (currentSlideIndex === 0);
+            document.getElementById('next-slide').disabled = (currentSlideIndex === project.slides.length - 1);
+        }
+
+        document.getElementById('prev-slide').onclick = () => {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateModal();
+            }
+        };
+
+        document.getElementById('next-slide').onclick = () => {
+            if (currentSlideIndex < pblData[currentProjectIndex].slides.length - 1) {
+                currentSlideIndex++;
+                updateModal();
+            }
+        };
+
+        document.querySelector('.close-modal').onclick = () => {
+            document.getElementById('slideshow-modal').style.display = 'none';
+        };
+
+        window.onclick = (event) => {
+            if (event.target == document.getElementById('slideshow-modal')) {
+                document.getElementById('slideshow-modal').style.display = 'none';
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', renderGrid);
+    </script>
 
     <footer>
         <div class="container">
