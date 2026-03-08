@@ -61,7 +61,73 @@
         </div>
     </section>
 
+    <!-- Slideshow Modal -->
+    <div id="slideshow-modal" class="modal">
+        <div class="modal-content card-premium">
+            <span class="close-modal">&times;</span>
+            <div class="slideshow-container">
+                <div id="slide-viewer">
+                    <div class="slide-header">
+                        <div class="badge badge-accent" id="slide-category">Project Detail</div>
+                        <h2 id="modal-project-title">Project Title</h2>
+                    </div>
+                    <div class="slide-body" id="slide-content" style="text-align: center;">
+                        <!-- Project Poster Image -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            background: var(--glass) !important;
+            border: 1px solid var(--accent-glow) !important;
+            padding: 40px;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            color: var(--text-muted);
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+        }
+
+        .slide-header {
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
         .publications-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -113,7 +179,7 @@
         .flip-card-back {
             background: linear-gradient(145deg, var(--primary-light), var(--primary-color)) !important;
             transform: rotateY(180deg);
-            justify-content: center;
+            justify-content: flex-start;
             text-align: left;
             overflow-y: auto;
         }
@@ -154,18 +220,24 @@
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 10px;
+            flex-shrink: 0;
         }
 
         .flip-card-intro {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
-            margin: 0;
+            margin: 0 0 20px 0;
         }
 
         .badge-pbl {
             align-self: flex-start;
             margin-bottom: 15px;
+        }
+
+        .btn-view-poster {
+            margin-top: auto;
+            width: 100%;
         }
     </style>
 
@@ -187,7 +259,8 @@
                 title: "FLOW OVER A CAR (Ahmed Body/Automotive)",
                 category: "Simulation",
                 image: "assets/images/pbl/ppt_of_ahmed_body.png",
-                introduction: "Ahmed body (a simplified car body) is a generic car body that captures the essential flow characteristics around air flow. Under normal conditions the flow around road vehicles is mainly turbulent, affected by high dropping and recirculation areas, a complex wake-flow, and long vortices. It is crucial for designers to fully understand this structure to optimize vehicle shape, aerodynamic drag, fuel consumption, and noise production."
+                introduction: "Ahmed body (a simplified car body) is a generic car body that captures the essential flow characteristics around air flow. Under normal conditions the flow around road vehicles is mainly turbulent, affected by high dropping and recirculation areas, a complex wake-flow, and long vortices. It is crucial for designers to fully understand this structure to optimize vehicle shape, aerodynamic drag, fuel consumption, and noise production.",
+                poster: "assets/images/pbl/posters/poster_ahmed_body.png"
             },
             {
                 title: "CAR CROSS-SECTION ANALYSIS",
@@ -199,7 +272,8 @@
                 title: "Verification of Laminar and Validation of Turbulent Pipe Flows",
                 category: "Fluid Mechanics",
                 image: "assets/images/pbl/LAMINAR_AND_TURBULENT_FLOW.png",
-                introduction: "Laminer Flow is characterized by fluid particles following smooth paths in layers with little mixing. Turbulent flow undergoes irregular fluctuations and mixing where speed changes continuously in magnitude and direction. This project simulate the transition using CFD to solve governing equations where no analytical solution exists."
+                introduction: "Laminer Flow is characterized by fluid particles following smooth paths in layers with little mixing. Turbulent flow undergoes irregular fluctuations and mixing where speed changes continuously in magnitude and direction. This project simulate the transition using CFD to solve governing equations where no analytical solution exists.",
+                poster: "assets/images/pbl/posters/poster_pipe_flow.png"
             },
             {
                 title: "Drag Reduction using Spoilers and Vortex Generators",
@@ -211,7 +285,8 @@
                 title: "Hemodynamics in Coronary Artery Bifurcations",
                 category: "Med-CFD",
                 image: "assets/images/pbl/Poster_Group_6_Bifurcating_artery.gif",
-                introduction: "Coronary arteries branch like trees. At bifurcation sites where a side-branch vessel comes off, plaque and fatty build-up are more likely to develop due to forces related to blood flow changes. Narrowing at these lesions is challenging to treat with current stents, making CFD modeling vital for cardiovascular interventionalists."
+                introduction: "Coronary arteries branch like trees. At bifurcation sites where a side-branch vessel comes off, plaque and fatty build-up are more likely to develop due to forces related to blood flow changes. Narrowing at these lesions is challenging to treat with current stents, making CFD modeling vital for cardiovascular interventionalists.",
+                poster: "assets/images/pbl/posters/poster_artery.png"
             },
             {
                 title: "Parametric Study of Angle of Attack on Airfoils",
@@ -223,7 +298,8 @@
                 title: "Bullet Train Aerodynamic Influence",
                 category: "Mechanical Design",
                 image: "assets/images/pbl/Poster_Group_2_1_.png",
-                introduction: "Fluid flow around moving bodies is normally turbulent, with velocity and pressure fields fluctuating in both time and space. Since no analytical solution exists for these governing equations, we utilize Computational Fluid Dynamics (CFD) and complex numerical algorithms to map pressure fields and optimize next-generation bullet trains."
+                introduction: "Fluid flow around moving bodies is normally turbulent, with velocity and pressure fields fluctuating in both time and space. Since no analytical solution exists for these governing equations, we utilize Computational Fluid Dynamics (CFD) and complex numerical algorithms to map pressure fields and optimize next-generation bullet trains.",
+                poster: "assets/images/pbl/posters/poster_bullet_train.png"
             }
         ];
 
@@ -245,11 +321,34 @@
                         <div class="flip-card-back">
                             <h3>Introduction</h3>
                             <p class="flip-card-intro">${project.introduction}</p>
+                            ${project.poster ? `
+                                <button class="btn btn-sm btn-view-poster" onclick="openPoster(${index})">View Project Poster</button>
+                            ` : ''}
                         </div>
                     </div>
                 </div>
             `).join('');
         }
+
+        function openPoster(index) {
+            const project = pblData[index];
+            document.getElementById('modal-project-title').textContent = project.title;
+            document.getElementById('slide-category').textContent = project.category;
+            document.getElementById('slide-content').innerHTML = `
+                <img src="${project.poster}" style="width: 100%; border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            `;
+            document.getElementById('slideshow-modal').style.display = 'flex';
+        }
+
+        document.querySelector('.close-modal').onclick = () => {
+            document.getElementById('slideshow-modal').style.display = 'none';
+        };
+
+        window.onclick = (event) => {
+            if (event.target == document.getElementById('slideshow-modal')) {
+                document.getElementById('slideshow-modal').style.display = 'none';
+            }
+        };
 
         document.addEventListener('DOMContentLoaded', renderGrid);
     </script>
