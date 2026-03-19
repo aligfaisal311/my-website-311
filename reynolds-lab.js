@@ -254,3 +254,4 @@ class ReynoldsLab {
 }
 
 const app = new ReynoldsLab();
+window.app = app;
