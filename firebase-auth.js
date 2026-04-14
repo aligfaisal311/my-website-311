@@ -69,7 +69,7 @@ if (switchBtn) {
             switchBtn.textContent = "Login instead";
         } else {
             welcomeTitle.textContent = "Welcome Back";
-            welcomeDesc.textContent = "Sign in to access Virtual Labs and Web Book materials.";
+            welcomeDesc.textContent = "Sign in to access Virtual Labs and research materials.";
             submitBtn.textContent = "Sign In";
             switchBtn.textContent = "Sign up";
         }
@@ -87,7 +87,7 @@ function showError(message) {
 // Global Auth State Observer
 onAuthStateChanged(auth, (user) => {
     // Only Web Book remains strictly protected for guests
-    const protectedPages = ['web-book.html', 'reynolds-lab.html'];
+    const protectedPages = ['reynolds-lab.html'];
     const currentPage = window.location.pathname.split('/').pop();
 
     console.log("Auth State Changed. User:", user ? user.email : "none", "Page:", currentPage);
